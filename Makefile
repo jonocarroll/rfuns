@@ -1,14 +1,15 @@
-.PHONY: help install test lint format clean dev
+.PHONY: help install test lint format clean dev hooks
 
 help:
 	@echo "Available commands:"
 	@echo "  make install    - Install package in development mode with dev dependencies"
 	@echo "  make test       - Run pytest tests with verbose output"
 	@echo "  make lint       - Run ruff check on rfuns/ and tests/"
-	@echo "  make format     - Format code with ruff"	
-	@echo "  make repl       - Launch a UV-powered Python REPL"	
+	@echo "  make format     - Format code with ruff"
+	@echo "  make repl       - Launch a UV-powered Python REPL"
 	@echo "  make clean      - Remove build artifacts and cache files"
 	@echo "  make dev        - Install dev dependencies"
+	@echo "  make hooks      - Install pre-commit hooks"
 
 install:
 	uv pip install -e ".[dev]"
@@ -40,3 +41,6 @@ clean:
 
 dev: install
 	@echo "Development environment ready!"
+
+hooks:
+	uvx pre-commit install
