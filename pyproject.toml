@@ -11,7 +11,7 @@ requires-python = ">=3.8"
 dependencies = []
 
 [project.optional-dependencies]
-dev = ["pytest", "ruff"]
+dev = ["pytest", "ruff", "rpy2"]
 
 [tool.setuptools.packages.find]
 where = ["."]

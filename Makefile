@@ -16,6 +16,9 @@ install:
 test:
 	uv run pytest tests/ -v
 
+test-r:
+	uv run pytest tests/ -v --r-check
+
 lint:
 	uv run ruff check rfuns/ tests/
 

@@ -197,8 +197,11 @@ The repository includes a `Makefile` for common tasks.
 
 - `make install` installs the package in editable mode with dev dependencies.
 - `make test` runs `pytest` on `tests/`.
+- `make test-r` runs `pytest --r-check` and compares rfuns outputs against R when available.
 - `make lint` runs `ruff` on `rfuns/` and `tests/`.
 - `make format` formats code with `ruff`.
 - `make clean` removes build artifacts and caches.
 - `make repl` starts a Python REPL using `uv`.
+
+R-backed comparison tests use `rpy2` and are only run when `rpy2` and R are available.
 
