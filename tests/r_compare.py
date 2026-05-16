@@ -1,8 +1,8 @@
 from typing import Any, Callable, Dict, Tuple
 
 try:
-    import rpy2.robjects as ro # type: ignore
-    import rpy2.robjects.vectors as rvec # type: ignore
+    import rpy2.robjects as ro  # type: ignore
+    import rpy2.robjects.vectors as rvec  # type: ignore
 except ImportError:  # pragma: no cover
     ro = None
     rvec = None

@@ -1,9 +1,10 @@
-import pytest # type: ignore
+import pytest  # type: ignore
 
 from rfuns import r_range, strsplit
 from tests.r_compare import assert_matches_r, r_available, r_status
 
 # Explicit checks for consistency not relying on the wrapper and r2y2
+
 
 def test_strsplit_matches_r():
     if not r_available():
