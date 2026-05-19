@@ -6,8 +6,17 @@ build-backend = "setuptools.build_meta"
 name = "rfuns"
 version = "0.1.0"
 description = "Python implementations of common R base functions"
+authors = [
+  {name = "Jonathan Carroll", email = "pypkg@jcarroll.com.au"},
+]
 readme = "README.md"
 requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Utilities"
+]
+keywords = ["R"]
+license = "MIT"
 dependencies = []
 
 [project.optional-dependencies]
@@ -15,3 +24,6 @@ dev = ["pytest", "ruff", "rpy2"]
 
 [tool.setuptools.packages.find]
 where = ["."]
+
+[project.urls]
+"Source" = "https://github.com/jonocarroll/rfuns"
