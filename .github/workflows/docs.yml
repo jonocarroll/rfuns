@@ -35,7 +35,7 @@ jobs:
               cd docs && uv run quartodoc build --verbose
               uv run quarto render
           - name: publish docs
-            if: github.ref_type == 'tag' && startswith(github.ref, 'refs/tags/v')
+            #if: github.ref_type == 'tag' && startswith(github.ref, 'refs/tags/v')
             uses: peaceiris/actions-gh-pages@v3
             with:
               github_token: ${{ secrets.GITHUB_TOKEN }}
