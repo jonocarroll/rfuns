@@ -1,0 +1,7 @@
+# head { #rfuns.head }
+
+```python
+head(x, n=6)
+```
+
+Return first n elements, like R's head().

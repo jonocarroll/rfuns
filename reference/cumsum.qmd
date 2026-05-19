@@ -1,0 +1,7 @@
+# cumsum { #rfuns.cumsum }
+
+```python
+cumsum(x)
+```
+
+Cumulative sum.

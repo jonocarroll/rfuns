@@ -1,0 +1,7 @@
+# file_path { #rfuns.file_path }
+
+```python
+file_path(*args)
+```
+
+Construct file paths, like R's file.path().

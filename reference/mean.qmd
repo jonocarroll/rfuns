@@ -1,0 +1,7 @@
+# mean { #rfuns.mean }
+
+```python
+mean(x, na_rm=False)
+```
+
+Arithmetic mean. Like R's mean().

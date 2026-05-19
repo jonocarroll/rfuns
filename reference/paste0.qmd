@@ -1,0 +1,7 @@
+# paste0 { #rfuns.paste0 }
+
+```python
+paste0(*args, collapse=None)
+```
+
+paste() with sep=''. Equivalent to R's paste0().

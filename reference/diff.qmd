@@ -1,0 +1,7 @@
+# diff { #rfuns.diff }
+
+```python
+diff(x, lag=1)
+```
+
+Return lagged differences of x.

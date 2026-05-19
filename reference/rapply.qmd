@@ -1,0 +1,8 @@
+# rapply { #rfuns.rapply }
+
+```python
+rapply(x, func)
+```
+
+Recursively apply func to all non-list elements in a nested list.
+Like R's rapply().

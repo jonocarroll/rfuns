@@ -1,0 +1,7 @@
+# cumprod { #rfuns.cumprod }
+
+```python
+cumprod(x)
+```
+
+Cumulative product.

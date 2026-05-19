@@ -1,0 +1,7 @@
+# setdiff { #rfuns.setdiff }
+
+```python
+setdiff(x, y)
+```
+
+Elements in x not in y, preserving order.

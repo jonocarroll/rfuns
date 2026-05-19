@@ -1,0 +1,7 @@
+# tail { #rfuns.tail }
+
+```python
+tail(x, n=6)
+```
+
+Return last n elements, like R's tail().

@@ -1,0 +1,7 @@
+# log10 { #rfuns.log10 }
+
+```python
+log10(x)
+```
+
+Log base 10. Vectorised.

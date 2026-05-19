@@ -1,0 +1,8 @@
+# margin_table { #rfuns.margin_table }
+
+```python
+margin_table(x)
+```
+
+Marginal sums of a contingency table (dict).
+For a flat table, total is returned.

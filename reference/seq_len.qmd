@@ -1,0 +1,7 @@
+# seq_len { #rfuns.seq_len }
+
+```python
+seq_len(n)
+```
+
+Return 0-based sequence of length n, like R's seq_len() but Python-indexed.

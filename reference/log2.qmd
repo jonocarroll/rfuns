@@ -1,0 +1,7 @@
+# log2 { #rfuns.log2 }
+
+```python
+log2(x)
+```
+
+Log base 2. Vectorised.

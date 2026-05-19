@@ -1,0 +1,7 @@
+# median { #rfuns.median }
+
+```python
+median(x, na_rm=False)
+```
+
+Median. Like R's median().

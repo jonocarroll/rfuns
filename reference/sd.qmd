@@ -1,0 +1,7 @@
+# sd { #rfuns.sd }
+
+```python
+sd(x, na_rm=False)
+```
+
+Sample standard deviation, like R's sd().

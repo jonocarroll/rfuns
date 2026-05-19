@@ -1,0 +1,7 @@
+# sign { #rfuns.sign }
+
+```python
+sign(x)
+```
+
+Return -1, 0, or 1. Vectorised.

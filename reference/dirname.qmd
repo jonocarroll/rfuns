@@ -1,0 +1,7 @@
+# dirname { #rfuns.dirname }
+
+```python
+dirname(path)
+```
+
+Return directory component of path. Like R's dirname().

@@ -1,0 +1,7 @@
+# file_exists { #rfuns.file_exists }
+
+```python
+file_exists(path)
+```
+
+Return True if file exists. Like R's file.exists().

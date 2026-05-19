@@ -1,0 +1,7 @@
+# dir_exists { #rfuns.dir_exists }
+
+```python
+dir_exists(path)
+```
+
+Return True if directory exists. Like R's dir.exists().

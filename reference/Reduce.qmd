@@ -1,0 +1,8 @@
+# Reduce { #rfuns.Reduce }
+
+```python
+Reduce(func, x, init=None, accumulate=False)
+```
+
+Reduce x with func. Like R's Reduce().
+If accumulate=True, return all intermediate results.

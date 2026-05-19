@@ -1,0 +1,7 @@
+# union { #rfuns.union }
+
+```python
+union(x, y)
+```
+
+Unique elements from x and y combined, preserving order.

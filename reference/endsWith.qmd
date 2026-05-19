@@ -1,0 +1,7 @@
+# endsWith { #rfuns.endsWith }
+
+```python
+endsWith(x, suffix)
+```
+
+Return True if x ends with suffix. Vectorised.

@@ -1,0 +1,7 @@
+# which { #rfuns.which }
+
+```python
+which(x)
+```
+
+Return 0-based indices where x is True, like R's which() but Python-indexed.

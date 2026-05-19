@@ -1,0 +1,7 @@
+# basename { #rfuns.basename }
+
+```python
+basename(path)
+```
+
+Return filename component of path. Like R's basename().

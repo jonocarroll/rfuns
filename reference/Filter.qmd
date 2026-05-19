@@ -1,0 +1,7 @@
+# Filter { #rfuns.Filter }
+
+```python
+Filter(func, x)
+```
+
+Return elements of x for which func returns True. Like R's Filter().

@@ -1,0 +1,7 @@
+# cummax { #rfuns.cummax }
+
+```python
+cummax(x)
+```
+
+Cumulative maximum.

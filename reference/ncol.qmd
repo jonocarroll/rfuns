@@ -1,0 +1,7 @@
+# ncol { #rfuns.ncol }
+
+```python
+ncol(x)
+```
+
+Number of columns of a list-of-lists (assumes rectangular). Like R's ncol().

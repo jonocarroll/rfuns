@@ -1,0 +1,8 @@
+# rstr { #rfuns.rstr }
+
+```python
+rstr(x)
+```
+
+Compact display of object structure, loosely like R's str().
+Named rstr to avoid shadowing Python's str().

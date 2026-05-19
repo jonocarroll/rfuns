@@ -1,0 +1,7 @@
+# trunc { #rfuns.trunc }
+
+```python
+trunc(x)
+```
+
+Truncate toward zero. Vectorised.

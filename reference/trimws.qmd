@@ -1,0 +1,7 @@
+# trimws { #rfuns.trimws }
+
+```python
+trimws(x, which='both', whitespace='[ \\t\\r\\n]')
+```
+
+Strip whitespace from strings. which: 'both', 'left', 'right'. Vectorised.

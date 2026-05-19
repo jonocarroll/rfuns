@@ -1,0 +1,7 @@
+# strsplit { #rfuns.strsplit }
+
+```python
+strsplit(x, split, fixed=False)
+```
+
+Split string x by split pattern. Returns list of lists. Vectorised.

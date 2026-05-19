@@ -1,0 +1,7 @@
+# Map { #rfuns.Map }
+
+```python
+Map(func, *args)
+```
+
+Apply func element-wise across args. Like R's Map().

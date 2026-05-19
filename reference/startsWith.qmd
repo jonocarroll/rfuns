@@ -1,0 +1,7 @@
+# startsWith { #rfuns.startsWith }
+
+```python
+startsWith(x, prefix)
+```
+
+Return True if x starts with prefix. Vectorised.

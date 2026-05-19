@@ -1,0 +1,7 @@
+# nchar { #rfuns.nchar }
+
+```python
+nchar(x)
+```
+
+Return the number of characters in a string. Vectorised.

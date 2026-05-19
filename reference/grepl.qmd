@@ -1,0 +1,7 @@
+# grepl { #rfuns.grepl }
+
+```python
+grepl(pattern, x, ignore_case=False, fixed=False)
+```
+
+Return True/False for each element of x matching pattern. Vectorised.

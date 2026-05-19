@@ -1,0 +1,7 @@
+# scale { #rfuns.scale }
+
+```python
+scale(x, center=True, scale_=True)
+```
+
+Centre and/or scale x, like R's scale().

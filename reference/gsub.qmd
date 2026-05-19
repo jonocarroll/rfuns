@@ -1,0 +1,7 @@
+# gsub { #rfuns.gsub }
+
+```python
+gsub(pattern, replacement, x, ignore_case=False, fixed=False)
+```
+
+Replace all matches of pattern in x with replacement. Vectorised.

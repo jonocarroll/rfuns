@@ -1,0 +1,7 @@
+# vec { #rfuns.vec }
+
+```python
+vec(x)
+```
+
+Wrap a list or tuple in a vectorised Vec object.

@@ -1,0 +1,49 @@
+Install `rfuns` with uv:
+
+```bash
+uv add rfuns
+```
+
+Or with pip:
+
+```bash
+pip install rfuns
+```
+
+To import all the functions defined in `rfuns`:
+
+```py
+from rfuns import *
+
+trimws(["  hello  ", "world "])
+# ['hello', 'world']
+
+strsplit("these words are split", " ") 
+# ["these", "words", "are", "split"]
+
+x = vec(['a', 'b', 'c', 'b'])
+which(x == 'b')
+# [1, 3]
+```
+
+Alternatively, import the library and use the functions with the a chosen prefix:
+
+```py
+import rfuns as r
+
+r.trimws(["  hello  ", "world "])
+# ['hello', 'world']
+
+r.strsplit("these words are split", " ") 
+# ["these", "words", "are", "split"]
+
+x = r.vec(['a', 'b', 'c', 'b'])
+r.which(x == 'b')
+# [1, 3]
+```
+
+See [this blog post](https://jcarroll.click/rfuns_post) for more background info.
+
+If you encounter any issues, check the GitHub repository to see if it's a known issue, and if not, feel free to report it: 
+
+[Link to GitHub Issues](https://github.com/jonocarroll/rfuns/issues)

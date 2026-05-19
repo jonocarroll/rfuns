@@ -1,0 +1,8 @@
+# paste { #rfuns.paste }
+
+```python
+paste(*args, sep=' ', collapse=None)
+```
+
+Concatenate vectors element-wise with sep, like R's paste().
+If collapse is given, further joins the result into a single string.

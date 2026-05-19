@@ -1,0 +1,8 @@
+# grep { #rfuns.grep }
+
+```python
+grep(pattern, x, ignore_case=False, fixed=False, value=False, invert=False)
+```
+
+Return indices (0-based) of elements in x matching pattern.
+If value=True, return the matching values instead.

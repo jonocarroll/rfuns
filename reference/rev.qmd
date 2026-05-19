@@ -1,0 +1,7 @@
+# rev { #rfuns.rev }
+
+```python
+rev(x)
+```
+
+Reverse a list.

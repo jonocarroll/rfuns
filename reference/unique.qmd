@@ -1,0 +1,7 @@
+# unique { #rfuns.unique }
+
+```python
+unique(x)
+```
+
+Return unique elements preserving order.

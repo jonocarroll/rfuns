@@ -1,0 +1,7 @@
+# length { #rfuns.length }
+
+```python
+length(x)
+```
+
+Length of x, like R's length().

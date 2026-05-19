@@ -1,0 +1,7 @@
+# which_min { #rfuns.which_min }
+
+```python
+which_min(x)
+```
+
+Return 0-based index of the minimum value.

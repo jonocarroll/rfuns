@@ -1,0 +1,7 @@
+# intersect { #rfuns.intersect }
+
+```python
+intersect(x, y)
+```
+
+Elements in both x and y, preserving order of x.

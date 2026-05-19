@@ -1,0 +1,7 @@
+# ceiling { #rfuns.ceiling }
+
+```python
+ceiling(x)
+```
+
+Ceiling. Vectorised.

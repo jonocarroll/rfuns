@@ -1,0 +1,7 @@
+# log { #rfuns.log }
+
+```python
+log(x, base=None)
+```
+
+Natural log, or log to given base. Vectorised.

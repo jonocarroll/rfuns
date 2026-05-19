@@ -1,0 +1,7 @@
+# seq_along { #rfuns.seq_along }
+
+```python
+seq_along(x)
+```
+
+Return 0-based indices along x, like R's seq_along() but Python-indexed.

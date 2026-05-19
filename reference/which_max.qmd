@@ -1,0 +1,7 @@
+# which_max { #rfuns.which_max }
+
+```python
+which_max(x)
+```
+
+Return 0-based index of the maximum value.

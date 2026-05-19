@@ -1,0 +1,7 @@
+# nrow { #rfuns.nrow }
+
+```python
+nrow(x)
+```
+
+Number of rows of a list-of-lists. Like R's nrow().

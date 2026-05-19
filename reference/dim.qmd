@@ -1,0 +1,7 @@
+# dim { #rfuns.dim }
+
+```python
+dim(x)
+```
+
+Return [nrow, ncol] of a list-of-lists. Like R's dim().

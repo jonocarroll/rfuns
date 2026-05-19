@@ -1,0 +1,8 @@
+# summary { #rfuns.summary }
+
+```python
+summary(x)
+```
+
+Basic numeric summary, like R's summary() on a numeric vector.
+Returns a dict with Min, Q1, Median, Mean, Q3, Max.

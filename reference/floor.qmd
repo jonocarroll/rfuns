@@ -1,0 +1,7 @@
+# floor { #rfuns.floor }
+
+```python
+floor(x)
+```
+
+Floor. Vectorised.

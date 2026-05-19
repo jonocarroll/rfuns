@@ -1,0 +1,8 @@
+# seq { #rfuns.seq }
+
+```python
+seq(from_=0, to=None, by=None, length_out=None)
+```
+
+Generate a sequence, like R's seq(), but 0-based by default.
+seq(0, 9), seq(0, 10, by=2), seq(length_out=5), seq(5)

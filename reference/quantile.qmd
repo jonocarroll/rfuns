@@ -1,0 +1,9 @@
+# quantile { #rfuns.quantile }
+
+```python
+quantile(x, probs=None, na_rm=False)
+```
+
+Sample quantiles, like R's quantile().
+probs: list of probabilities in [0, 1]. Defaults to [0, 0.25, 0.5, 0.75, 1].
+Uses R's type 7 method (linear interpolation).

@@ -1,0 +1,7 @@
+# toupper { #rfuns.toupper }
+
+```python
+toupper(x)
+```
+
+Convert string to uppercase. Vectorised.

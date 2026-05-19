@@ -1,0 +1,23 @@
+# list_files { #rfuns.list_files }
+
+```python
+list_files(
+    path='.',
+    pattern=None,
+    recursive=False,
+    full_names=False,
+    all_files=False,
+)
+```
+
+List files in a directory, like R's list.files().
+
+## Parameters {.doc-section .doc-section-parameters}
+
+| Name       | Type   | Description                                          | Default   |
+|------------|--------|------------------------------------------------------|-----------|
+| path       | str    | Directory to list.                                   | `'.'`     |
+| pattern    | str    | Regex pattern to filter filenames.                   | `None`    |
+| recursive  | bool   | Whether to recurse into subdirectories.              | `False`   |
+| full_names | bool   | Whether to return full paths.                        | `False`   |
+| all_files  | bool   | Whether to include hidden files starting with a dot. | `False`   |

@@ -1,0 +1,135 @@
+# Function reference {.doc .doc-index}
+
+## Strings
+
+String manipulation functions.
+
+| | |
+| --- | --- |
+| [nchar](nchar.qmd#rfuns.nchar) | Return the number of characters in a string. Vectorised. |
+| [nzchar](nzchar.qmd#rfuns.nzchar) | Return True if string is non-empty. Vectorised. |
+| [paste](paste.qmd#rfuns.paste) | Concatenate vectors element-wise with sep, like R's paste(). |
+| [paste0](paste0.qmd#rfuns.paste0) | paste() with sep=''. Equivalent to R's paste0(). |
+| [grepl](grepl.qmd#rfuns.grepl) | Return True/False for each element of x matching pattern. Vectorised. |
+| [grep](grep.qmd#rfuns.grep) | Return indices (0-based) of elements in x matching pattern. |
+| [gsub](gsub.qmd#rfuns.gsub) | Replace all matches of pattern in x with replacement. Vectorised. |
+| [sub](sub.qmd#rfuns.sub) | Replace the first match of pattern in x with replacement. Vectorised. |
+| [trimws](trimws.qmd#rfuns.trimws) | Strip whitespace from strings. which: 'both', 'left', 'right'. Vectorised. |
+| [toupper](toupper.qmd#rfuns.toupper) | Convert string to uppercase. Vectorised. |
+| [tolower](tolower.qmd#rfuns.tolower) | Convert string to lowercase. Vectorised. |
+| [startsWith](startsWith.qmd#rfuns.startsWith) | Return True if x starts with prefix. Vectorised. |
+| [endsWith](endsWith.qmd#rfuns.endsWith) | Return True if x ends with suffix. Vectorised. |
+| [strsplit](strsplit.qmd#rfuns.strsplit) | Split string x by split pattern. Returns list of lists. Vectorised. |
+| [substr](substr.qmd#rfuns.substr) | Extract substring from start to stop (0-based, inclusive). Vectorised. |
+| [chartr](chartr.qmd#rfuns.chartr) | Replace characters in old with corresponding characters in new. Vectorised. |
+| [formatC](formatC.qmd#rfuns.formatC) | Format numbers as strings. Vectorised. |
+
+## Vectors
+
+Vector manipulation functions.
+
+| | |
+| --- | --- |
+| [which](which.qmd#rfuns.which) | Return 0-based indices where x is True, like R's which() but Python-indexed. |
+| [which_min](which_min.qmd#rfuns.which_min) | Return 0-based index of the minimum value. |
+| [which_max](which_max.qmd#rfuns.which_max) | Return 0-based index of the maximum value. |
+| [diff](diff.qmd#rfuns.diff) | Return lagged differences of x. |
+| [cumsum](cumsum.qmd#rfuns.cumsum) | Cumulative sum. |
+| [cumprod](cumprod.qmd#rfuns.cumprod) | Cumulative product. |
+| [cummax](cummax.qmd#rfuns.cummax) | Cumulative maximum. |
+| [cummin](cummin.qmd#rfuns.cummin) | Cumulative minimum. |
+| [rev](rev.qmd#rfuns.rev) | Reverse a list. |
+| [duplicated](duplicated.qmd#rfuns.duplicated) | Return boolean list: True where element has appeared earlier. |
+| [setdiff](setdiff.qmd#rfuns.setdiff) | Elements in x not in y, preserving order. |
+| [intersect](intersect.qmd#rfuns.intersect) | Elements in both x and y, preserving order of x. |
+| [union](union.qmd#rfuns.union) | Unique elements from x and y combined, preserving order. |
+| [unique](unique.qmd#rfuns.unique) | Return unique elements preserving order. |
+| [seq_along](seq_along.qmd#rfuns.seq_along) | Return 0-based indices along x, like R's seq_along() but Python-indexed. |
+| [seq_len](seq_len.qmd#rfuns.seq_len) | Return 0-based sequence of length n, like R's seq_len() but Python-indexed. |
+| [seq](seq.qmd#rfuns.seq) | Generate a sequence, like R's seq(), but 0-based by default. |
+| [r_range](r_range.qmd#rfuns.r_range) | Return [min, max] of x, like R's range(). |
+
+## Math
+
+Math operations.
+
+| | |
+| --- | --- |
+| [sign](sign.qmd#rfuns.sign) | Return -1, 0, or 1. Vectorised. |
+| [trunc](trunc.qmd#rfuns.trunc) | Truncate toward zero. Vectorised. |
+| [ceiling](ceiling.qmd#rfuns.ceiling) | Ceiling. Vectorised. |
+| [floor](floor.qmd#rfuns.floor) | Floor. Vectorised. |
+| [sqrt](sqrt.qmd#rfuns.sqrt) | Square root. Vectorised. |
+| [log](log.qmd#rfuns.log) | Natural log, or log to given base. Vectorised. |
+| [log2](log2.qmd#rfuns.log2) | Log base 2. Vectorised. |
+| [log10](log10.qmd#rfuns.log10) | Log base 10. Vectorised. |
+| [exp](exp.qmd#rfuns.exp) | e^x. Vectorised. |
+| [abs](abs.qmd#rfuns.abs) | Absolute value. Vectorised. |
+| [var](var.qmd#rfuns.var) | Sample variance (ddof=1), like R's var(). |
+| [sd](sd.qmd#rfuns.sd) | Sample standard deviation, like R's sd(). |
+| [mean](mean.qmd#rfuns.mean) | Arithmetic mean. Like R's mean(). |
+| [median](median.qmd#rfuns.median) | Median. Like R's median(). |
+| [quantile](quantile.qmd#rfuns.quantile) | Sample quantiles, like R's quantile(). |
+| [scale](scale.qmd#rfuns.scale) | Centre and/or scale x, like R's scale(). |
+| [round](round.qmd#rfuns.round) | Round x to digits decimal places, like R's round(). |
+
+## Files
+
+File and path utilities.
+
+| | |
+| --- | --- |
+| [list_files](list_files.qmd#rfuns.list_files) | List files in a directory, like R's list.files(). |
+| [file_exists](file_exists.qmd#rfuns.file_exists) | Return True if file exists. Like R's file.exists(). |
+| [dir_exists](dir_exists.qmd#rfuns.dir_exists) | Return True if directory exists. Like R's dir.exists(). |
+| [basename](basename.qmd#rfuns.basename) | Return filename component of path. Like R's basename(). |
+| [dirname](dirname.qmd#rfuns.dirname) | Return directory component of path. Like R's dirname(). |
+| [file_path](file_path.qmd#rfuns.file_path) | Construct file paths, like R's file.path(). |
+
+## Table
+
+Tabulation functions.
+
+| | |
+| --- | --- |
+| [table](table.qmd#rfuns.table) | Frequency table of x, sorted by name, like R's table(). |
+| [prop_table](prop_table.qmd#rfuns.prop_table) | Proportional frequency table, like R's prop.table(). |
+| [margin_table](margin_table.qmd#rfuns.margin_table) | Marginal sums of a contingency table (dict). |
+
+## Functional
+
+Functional programming helpers.
+
+| | |
+| --- | --- |
+| [lapply](lapply.qmd#rfuns.lapply) | Apply func to each element of x, return list. Like R's lapply(). |
+| [sapply](sapply.qmd#rfuns.sapply) | Apply func to each element of x, simplify if possible. Like R's sapply(). |
+| [vapply](vapply.qmd#rfuns.vapply) | Like sapply() but checks that each result is of expected_type. |
+| [tapply](tapply.qmd#rfuns.tapply) | Apply func to subsets of x grouped by index. Like R's tapply(). |
+| [rapply](rapply.qmd#rfuns.rapply) | Recursively apply func to all non-list elements in a nested list. |
+| [Filter](Filter.qmd#rfuns.Filter) | Return elements of x for which func returns True. Like R's Filter(). |
+| [Map](Map.qmd#rfuns.Map) | Apply func element-wise across args. Like R's Map(). |
+| [Reduce](Reduce.qmd#rfuns.Reduce) | Reduce x with func. Like R's Reduce(). |
+
+## Inspect
+
+Inspection and summary functions.
+
+| | |
+| --- | --- |
+| [head](head.qmd#rfuns.head) | Return first n elements, like R's head(). |
+| [tail](tail.qmd#rfuns.tail) | Return last n elements, like R's tail(). |
+| [length](length.qmd#rfuns.length) | Length of x, like R's length(). |
+| [nrow](nrow.qmd#rfuns.nrow) | Number of rows of a list-of-lists. Like R's nrow(). |
+| [ncol](ncol.qmd#rfuns.ncol) | Number of columns of a list-of-lists (assumes rectangular). Like R's ncol(). |
+| [dim](dim.qmd#rfuns.dim) | Return [nrow, ncol] of a list-of-lists. Like R's dim(). |
+| [summary](summary.qmd#rfuns.summary) | Basic numeric summary, like R's summary() on a numeric vector. |
+| [rstr](rstr.qmd#rfuns.rstr) | Compact display of object structure, loosely like R's str(). |
+
+## Utils
+
+Utility helpers.
+
+| | |
+| --- | --- |
+| [vec](vec.qmd#rfuns.vec) | Wrap a list or tuple in a vectorised Vec object. |

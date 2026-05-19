@@ -1,0 +1,7 @@
+# tolower { #rfuns.tolower }
+
+```python
+tolower(x)
+```
+
+Convert string to lowercase. Vectorised.

@@ -1,0 +1,8 @@
+# table { #rfuns.table }
+
+```python
+table(x)
+```
+
+Frequency table of x, sorted by name, like R's table().
+Returns a dict of {value: count}.

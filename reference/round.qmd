@@ -1,0 +1,9 @@
+# round { #rfuns.round }
+
+```python
+round(x, digits=0)
+```
+
+Round x to digits decimal places, like R's round().
+Note: uses round-half-to-even (banker's rounding), same as Python's built-in.
+R also uses this by default (IEC 60559 standard).

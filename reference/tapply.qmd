@@ -1,0 +1,8 @@
+# tapply { #rfuns.tapply }
+
+```python
+tapply(x, index, func)
+```
+
+Apply func to subsets of x grouped by index. Like R's tapply().
+Returns a dict of {group: result}.

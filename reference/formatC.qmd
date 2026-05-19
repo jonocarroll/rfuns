@@ -1,0 +1,7 @@
+# formatC { #rfuns.formatC }
+
+```python
+formatC(x, digits=6, format='g', width=None)
+```
+
+Format numbers as strings. Vectorised.

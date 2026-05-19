@@ -1,0 +1,333 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "rfuns"
+  description: "Python implementations of common R base functions"
+  page-navigation: true
+  page-footer:
+    center: |
+      Made by [Jonathan Carroll](https://jcarroll.com.au)
+  navbar:
+    background: light
+    pinned: true
+    logo: rfuns_logo.png
+    left:
+      - text: "Get started"
+        file: get_started.qmd
+      - text: "Reference"
+        file: reference/index.qmd
+    right:
+      - icon: github
+        href: https://github.com/jonocarroll/rfuns
+        aria-label: rfuns GitHub
+  sidebar:
+    style: "floating"
+    collapse-level: 1
+    contents:
+      - section: Strings
+        contents:
+          - text: "`nchar`"
+            href: reference/nchar.qmd
+          - text: "`nzchar`"
+            href: reference/nzchar.qmd
+          - text: "`paste`"
+            href: reference/paste.qmd
+          - text: "`paste0`"
+            href: reference/paste0.qmd
+          - text: "`grepl`"
+            href: reference/grepl.qmd
+          - text: "`grep`"
+            href: reference/grep.qmd
+          - text: "`gsub`"
+            href: reference/gsub.qmd
+          - text: "`sub`"
+            href: reference/sub.qmd
+          - text: "`trimws`"
+            href: reference/trimws.qmd
+          - text: "`toupper`"
+            href: reference/toupper.qmd
+          - text: "`tolower`"
+            href: reference/tolower.qmd
+          - text: "`startsWith`"
+            href: reference/startsWith.qmd
+          - text: "`endsWith`"
+            href: reference/endsWith.qmd
+          - text: "`strsplit`"
+            href: reference/strsplit.qmd
+          - text: "`substr`"
+            href: reference/substr.qmd
+          - text: "`chartr`"
+            href: reference/chartr.qmd
+          - text: "`formatC`"
+            href: reference/formatC.qmd
+      - section: Vectors
+        contents:
+          - text: "`which`"
+            href: reference/which.qmd
+          - text: "`which_min`"
+            href: reference/which_min.qmd
+          - text: "`which_max`"
+            href: reference/which_max.qmd
+          - text: "`diff`"
+            href: reference/diff.qmd
+          - text: "`cumsum`"
+            href: reference/cumsum.qmd
+          - text: "`cumprod`"
+            href: reference/cumprod.qmd
+          - text: "`cummax`"
+            href: reference/cummax.qmd
+          - text: "`cummin`"
+            href: reference/cummin.qmd
+          - text: "`rev`"
+            href: reference/rev.qmd
+          - text: "`duplicated`"
+            href: reference/duplicated.qmd
+          - text: "`setdiff`"
+            href: reference/setdiff.qmd
+          - text: "`intersect`"
+            href: reference/intersect.qmd
+          - text: "`union`"
+            href: reference/union.qmd
+          - text: "`unique`"
+            href: reference/unique.qmd
+          - text: "`seq_along`"
+            href: reference/seq_along.qmd
+          - text: "`seq_len`"
+            href: reference/seq_len.qmd
+          - text: "`seq`"
+            href: reference/seq.qmd
+          - text: "`r_range`"
+            href: reference/r_range.qmd
+      - section: Math
+        contents:
+          - text: "`sign`"
+            href: reference/sign.qmd
+          - text: "`trunc`"
+            href: reference/trunc.qmd
+          - text: "`ceiling`"
+            href: reference/ceiling.qmd
+          - text: "`floor`"
+            href: reference/floor.qmd
+          - text: "`sqrt`"
+            href: reference/sqrt.qmd
+          - text: "`log`"
+            href: reference/log.qmd
+          - text: "`log2`"
+            href: reference/log2.qmd
+          - text: "`log10`"
+            href: reference/log10.qmd
+          - text: "`exp`"
+            href: reference/exp.qmd
+          - text: "`abs`"
+            href: reference/abs.qmd
+          - text: "`var`"
+            href: reference/var.qmd
+          - text: "`sd`"
+            href: reference/sd.qmd
+          - text: "`mean`"
+            href: reference/mean.qmd
+          - text: "`median`"
+            href: reference/median.qmd
+          - text: "`quantile`"
+            href: reference/quantile.qmd
+          - text: "`scale`"
+            href: reference/scale.qmd
+          - text: "`round`"
+            href: reference/round.qmd
+      - section: Files
+        contents:
+          - text: "`list_files`"
+            href: reference/list_files.qmd
+          - text: "`file_exists`"
+            href: reference/file_exists.qmd
+          - text: "`dir_exists`"
+            href: reference/dir_exists.qmd
+          - text: "`basename`"
+            href: reference/basename.qmd
+          - text: "`dirname`"
+            href: reference/dirname.qmd
+          - text: "`file_path`"
+            href: reference/file_path.qmd
+      - section: Table
+        contents:
+          - text: "`table`"
+            href: reference/table.qmd
+          - text: "`prop_table`"
+            href: reference/prop_table.qmd
+          - text: "`margin_table`"
+            href: reference/margin_table.qmd
+      - section: Functional
+        contents:
+          - text: "`lapply`"
+            href: reference/lapply.qmd
+          - text: "`sapply`"
+            href: reference/sapply.qmd
+          - text: "`vapply`"
+            href: reference/vapply.qmd
+          - text: "`tapply`"
+            href: reference/tapply.qmd
+          - text: "`rapply`"
+            href: reference/rapply.qmd
+          - text: "`Filter`"
+            href: reference/Filter.qmd
+          - text: "`Map`"
+            href: reference/Map.qmd
+          - text: "`Reduce`"
+            href: reference/Reduce.qmd
+      - section: Inspect
+        contents:
+          - text: "`head`"
+            href: reference/head.qmd
+          - text: "`tail`"
+            href: reference/tail.qmd
+          - text: "`length`"
+            href: reference/length.qmd
+          - text: "`nrow`"
+            href: reference/nrow.qmd
+          - text: "`ncol`"
+            href: reference/ncol.qmd
+          - text: "`dim`"
+            href: reference/dim.qmd
+          - text: "`summary`"
+            href: reference/summary.qmd
+          - text: "`rstr`"
+            href: reference/rstr.qmd
+      - section: Utils
+        contents:
+          - text: "`vec`"
+            href: reference/vec.qmd
+      - section: Reference
+        contents:
+          - text: "Function reference"
+            href: reference/index.qmd
+
+# tell quarto to read the generated styles
+format:
+  html:
+    sidebar: true
+
+
+# tell quarto to read the generated sidebar
+metadata-files:
+  - reference/_sidebar.yml
+
+quartodoc:
+  # the name used to import the package you want to create reference docs for
+  package: rfuns
+
+  # write sidebar and style data
+  sidebar: reference/_sidebar.yml
+  css: reference/_styles-quartodoc.css
+
+  sections:
+    - title: Strings
+      desc: String manipulation functions.
+      contents:
+        - nchar
+        - nzchar
+        - paste
+        - paste0
+        - grepl
+        - grep
+        - gsub
+        - sub
+        - trimws
+        - toupper
+        - tolower
+        - startsWith
+        - endsWith
+        - strsplit
+        - substr
+        - chartr
+        - formatC
+
+    - title: Vectors
+      desc: Vector manipulation functions.
+      contents:
+        - which
+        - which_min
+        - which_max
+        - diff
+        - cumsum
+        - cumprod
+        - cummax
+        - cummin
+        - rev
+        - duplicated
+        - setdiff
+        - intersect
+        - union
+        - unique
+        - seq_along
+        - seq_len
+        - seq
+        - r_range
+
+    - title: Math
+      desc: Math operations.
+      contents:
+        - sign
+        - trunc
+        - ceiling
+        - floor
+        - sqrt
+        - log
+        - log2
+        - log10
+        - exp
+        - abs
+        - var
+        - sd
+        - mean
+        - median
+        - quantile
+        - scale
+        - round
+
+    - title: Files
+      desc: File and path utilities.
+      contents:
+        - list_files
+        - file_exists
+        - dir_exists
+        - basename
+        - dirname
+        - file_path
+
+    - title: Table
+      desc: Tabulation functions.
+      contents:
+        - table
+        - prop_table
+        - margin_table
+
+    - title: Functional
+      desc: Functional programming helpers.
+      contents:
+        - lapply
+        - sapply
+        - vapply
+        - tapply
+        - rapply
+        - Filter
+        - Map
+        - Reduce
+
+    - title: Inspect
+      desc: Inspection and summary functions.
+      contents:
+        - head
+        - tail
+        - length
+        - nrow
+        - ncol
+        - dim
+        - summary
+        - rstr
+
+    - title: Utils
+      desc: Utility helpers.
+      contents:
+        - vec

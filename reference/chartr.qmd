@@ -1,0 +1,7 @@
+# chartr { #rfuns.chartr }
+
+```python
+chartr(old, new, x)
+```
+
+Replace characters in old with corresponding characters in new. Vectorised.

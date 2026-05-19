@@ -1,0 +1,7 @@
+# nzchar { #rfuns.nzchar }
+
+```python
+nzchar(x)
+```
+
+Return True if string is non-empty. Vectorised.

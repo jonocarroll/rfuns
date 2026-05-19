@@ -1,0 +1,7 @@
+# duplicated { #rfuns.duplicated }
+
+```python
+duplicated(x)
+```
+
+Return boolean list: True where element has appeared earlier.

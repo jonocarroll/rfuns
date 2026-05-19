@@ -1,0 +1,7 @@
+# sub { #rfuns.sub }
+
+```python
+sub(pattern, replacement, x, ignore_case=False, fixed=False)
+```
+
+Replace the first match of pattern in x with replacement. Vectorised.

@@ -1,0 +1,7 @@
+# var { #rfuns.var }
+
+```python
+var(x, na_rm=False)
+```
+
+Sample variance (ddof=1), like R's var().

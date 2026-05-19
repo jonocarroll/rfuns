@@ -1,0 +1,1098 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "rfuns ",
+    "section": "",
+    "text": "rfuns is a Python package providing implementations of common base R functions, adapted for Python with 0-based indexing and vectorisation support. This was mainly built to address my own desire to use these functions in exactly the way I would use them in R, but without calling out to an R session. All of these are implemented in Python without external/non-standard dependencies.\nThis is not intended to be used in production, and makes no guarantees about performance - this is purely for ergonomics of someone who usually writes code in R, but is using Python.\nSee this blog post for more info: https://jcarroll.click/rfuns\n\n\nInstall with uv:\nuv add rfuns\nOr with pip:\npip install rfuns\n\n\n\nAll indexing is 0-based, unlike R’s 1-based system. Vectorisation is opt-in using the vec() function or @_vec decorator on your own functions. Some functions differ from standard Python equivalents to match R behavior, such as setdiff preserving order from the first argument.\n\n\n\nTrim whitespace from strings:\nfrom rfuns import trimws\ntrimws([\"  hello  \", \"world \"])\n# ['hello', 'world']\nSplit strings:\nfrom rfuns import strsplit\nstrsplit(\"these words are split\", \" \") \n# [\"these\", \"words\", \"are\", \"split\"]\nFind indices of True values:\nfrom rfuns import which\nwhich([False, True, False, True])\n# [1, 3]\nFind indices where vector equals a value:\nfrom rfuns import which, vec\nx = vec(['a', 'b', 'c', 'b'])\nwhich(x == 'b')\n# [1, 3]\n(note that since Python is not vectorised, a simple == between a list and a value is False, so the list is wrapped in vec() which implements vectorised binary operations)\nGenerate sequences:\nfrom rfuns import seq, seq_len\nseq(2, 5)\n# [2, 3, 4, 5]\n\nseq_len(5)\n# [0, 1, 2, 3, 4]\nCompute set difference preserving order:\nset([4, 3, 1, 2]) - set([2, 4])\n# {1, 3} \n\nfrom rfuns import setdiff\nsetdiff([4, 3, 1, 2], [2, 4])\n# [3, 1]\nApply math functions vectorised:\nfrom rfuns import abs, sqrt\nabs([-1, 2, -3])\n# [1, 2, 3]\n\nsqrt([81, 9, 4])\n# [9.0, 3.0, 2.0]\nList files in a directory:\nfrom rfuns import list_files\nlist_files(\".\")\n# ['file1.txt', 'file2.py']\n\n\n\nThe package includes utilities for strings, vectors, math operations, and file handling, working with vector arguments where possible. Functions are designed to work with Python data structures like lists and support manual vectorisation through the vec() wrapper.\nNames based on R’s dot-separated functions are written with underscores because Python identifiers cannot contain .. Functions marked with † are renamed from R-style dot names, and functions marked with ‡ are vectorised via the _vec decorator.\n\n\n\nnchar(x) ‡\nnzchar(x) ‡\npaste(*args, sep=\" \", collapse=None)\npaste0(*args, collapse=None)\ngrepl(pattern, x, ignore_case=False, fixed=False) ‡\ngrep(pattern, x, ignore_case=False, fixed=False, value=False, invert=False)\ngsub(pattern, replacement, x, ignore_case=False, fixed=False) ‡\nsub(pattern, replacement, x, ignore_case=False, fixed=False) ‡\ntrimws(x, which=\"both\", whitespace=r\"[ \\t\\r\\n]\") ‡\ntoupper(x) ‡\ntolower(x) ‡\nstartsWith(x, prefix) ‡\nendsWith(x, suffix) ‡\nstrsplit(x, split, fixed=False) ‡\nsubstr(x, start, stop)\nchartr(old, new, x) ‡\nformatC(x, digits=6, format=\"g\", width=None) ‡\n\n\n\n\n\nwhich(x)\nwhich_min(x) †\nwhich_max(x) †\ndiff(x, lag=1)\ncumsum(x)\ncumprod(x)\ncummax(x)\ncummin(x)\nrev(x)\nduplicated(x)\nsetdiff(x, y)\nintersect(x, y)\nunion(x, y)\nunique(x)\nseq_along(x)\nseq_len(n)\nseq(from_=0, to=None, by=None, length_out=None) (from is a reserved keyword)\nsign(x) ‡\nr_range(x) (renamed to not conflict with range())\n\n\n\n\n\nsign(x) ‡\ntrunc(x) ‡\nceiling(x) ‡\nfloor(x) ‡\nsqrt(x) ‡\nlog(x, base=None) ‡\nlog2(x) ‡\nlog10(x) ‡\nexp(x) ‡\nabs(x) ‡\nvar(x, na_rm=False)\nsd(x, na_rm=False)\nmean(x, na_rm=False)\nmedian(x, na_rm=False)\nquantile(x, probs=None, na_rm=False)\nscale(x, center=True, scale_=True)\nround(x, digits=0)\n\n\n\n\n\nlist_files(path=\".\", pattern=None, all_files=False, full_names=False, recursive=False, ignore_case=False, include_dirs=False, no_dot=False) †\nfile_exists(path) † ‡\ndir_exists(path) † ‡\nbasename(path) ‡\ndirname(path) ‡\nfile_path(*args) †\n\n\n\n\n\ntable(x)\nprop_table(x) †\nmargin_table(x) †\n\n\n\n\n\nlapply(x, func)\nsapply(x, func)\nvapply(x, func, expected_type)\ntapply(x, index, func)\nrapply(x, func)\nFilter(func, x)\nMap(func, *args)\nReduce(func, x, init=None, accumulate=False)\n\n\n\n\n\nhead(x, n=6)\ntail(x, n=6)\nlength(x)\nnrow(x)\nncol(x)\ndim(x)\nsummary(x)\nrstr(x) (renamed to not conflict with str())\n\n\n\n\n\nvec(x)\n\n\n\n\n\nThe repository includes a Makefile for common tasks.\n\nmake install installs the package in editable mode with dev dependencies.\nmake test runs pytest on tests/.\nmake test-r runs pytest --r-check and compares rfuns outputs against R when available.\nmake lint runs ruff on rfuns/ and tests/.\nmake format formats code with ruff.\nmake clean removes build artifacts and caches.\nmake repl starts a Python REPL using uv.\n\nR-backed comparison tests use rpy2 and are only run when rpy2 and R are available."
+  },
+  {
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
+    "title": "rfuns ",
+    "section": "",
+    "text": "Install with uv:\nuv add rfuns\nOr with pip:\npip install rfuns"
+  },
+  {
+    "objectID": "index.html#important-notes",
+    "href": "index.html#important-notes",
+    "title": "rfuns ",
+    "section": "",
+    "text": "All indexing is 0-based, unlike R’s 1-based system. Vectorisation is opt-in using the vec() function or @_vec decorator on your own functions. Some functions differ from standard Python equivalents to match R behavior, such as setdiff preserving order from the first argument."
+  },
+  {
+    "objectID": "index.html#examples",
+    "href": "index.html#examples",
+    "title": "rfuns ",
+    "section": "",
+    "text": "Trim whitespace from strings:\nfrom rfuns import trimws\ntrimws([\"  hello  \", \"world \"])\n# ['hello', 'world']\nSplit strings:\nfrom rfuns import strsplit\nstrsplit(\"these words are split\", \" \") \n# [\"these\", \"words\", \"are\", \"split\"]\nFind indices of True values:\nfrom rfuns import which\nwhich([False, True, False, True])\n# [1, 3]\nFind indices where vector equals a value:\nfrom rfuns import which, vec\nx = vec(['a', 'b', 'c', 'b'])\nwhich(x == 'b')\n# [1, 3]\n(note that since Python is not vectorised, a simple == between a list and a value is False, so the list is wrapped in vec() which implements vectorised binary operations)\nGenerate sequences:\nfrom rfuns import seq, seq_len\nseq(2, 5)\n# [2, 3, 4, 5]\n\nseq_len(5)\n# [0, 1, 2, 3, 4]\nCompute set difference preserving order:\nset([4, 3, 1, 2]) - set([2, 4])\n# {1, 3} \n\nfrom rfuns import setdiff\nsetdiff([4, 3, 1, 2], [2, 4])\n# [3, 1]\nApply math functions vectorised:\nfrom rfuns import abs, sqrt\nabs([-1, 2, -3])\n# [1, 2, 3]\n\nsqrt([81, 9, 4])\n# [9.0, 3.0, 2.0]\nList files in a directory:\nfrom rfuns import list_files\nlist_files(\".\")\n# ['file1.txt', 'file2.py']"
+  },
+  {
+    "objectID": "index.html#implemented-functions",
+    "href": "index.html#implemented-functions",
+    "title": "rfuns ",
+    "section": "",
+    "text": "The package includes utilities for strings, vectors, math operations, and file handling, working with vector arguments where possible. Functions are designed to work with Python data structures like lists and support manual vectorisation through the vec() wrapper.\nNames based on R’s dot-separated functions are written with underscores because Python identifiers cannot contain .. Functions marked with † are renamed from R-style dot names, and functions marked with ‡ are vectorised via the _vec decorator.\n\n\n\nnchar(x) ‡\nnzchar(x) ‡\npaste(*args, sep=\" \", collapse=None)\npaste0(*args, collapse=None)\ngrepl(pattern, x, ignore_case=False, fixed=False) ‡\ngrep(pattern, x, ignore_case=False, fixed=False, value=False, invert=False)\ngsub(pattern, replacement, x, ignore_case=False, fixed=False) ‡\nsub(pattern, replacement, x, ignore_case=False, fixed=False) ‡\ntrimws(x, which=\"both\", whitespace=r\"[ \\t\\r\\n]\") ‡\ntoupper(x) ‡\ntolower(x) ‡\nstartsWith(x, prefix) ‡\nendsWith(x, suffix) ‡\nstrsplit(x, split, fixed=False) ‡\nsubstr(x, start, stop)\nchartr(old, new, x) ‡\nformatC(x, digits=6, format=\"g\", width=None) ‡\n\n\n\n\n\nwhich(x)\nwhich_min(x) †\nwhich_max(x) †\ndiff(x, lag=1)\ncumsum(x)\ncumprod(x)\ncummax(x)\ncummin(x)\nrev(x)\nduplicated(x)\nsetdiff(x, y)\nintersect(x, y)\nunion(x, y)\nunique(x)\nseq_along(x)\nseq_len(n)\nseq(from_=0, to=None, by=None, length_out=None) (from is a reserved keyword)\nsign(x) ‡\nr_range(x) (renamed to not conflict with range())\n\n\n\n\n\nsign(x) ‡\ntrunc(x) ‡\nceiling(x) ‡\nfloor(x) ‡\nsqrt(x) ‡\nlog(x, base=None) ‡\nlog2(x) ‡\nlog10(x) ‡\nexp(x) ‡\nabs(x) ‡\nvar(x, na_rm=False)\nsd(x, na_rm=False)\nmean(x, na_rm=False)\nmedian(x, na_rm=False)\nquantile(x, probs=None, na_rm=False)\nscale(x, center=True, scale_=True)\nround(x, digits=0)\n\n\n\n\n\nlist_files(path=\".\", pattern=None, all_files=False, full_names=False, recursive=False, ignore_case=False, include_dirs=False, no_dot=False) †\nfile_exists(path) † ‡\ndir_exists(path) † ‡\nbasename(path) ‡\ndirname(path) ‡\nfile_path(*args) †\n\n\n\n\n\ntable(x)\nprop_table(x) †\nmargin_table(x) †\n\n\n\n\n\nlapply(x, func)\nsapply(x, func)\nvapply(x, func, expected_type)\ntapply(x, index, func)\nrapply(x, func)\nFilter(func, x)\nMap(func, *args)\nReduce(func, x, init=None, accumulate=False)\n\n\n\n\n\nhead(x, n=6)\ntail(x, n=6)\nlength(x)\nnrow(x)\nncol(x)\ndim(x)\nsummary(x)\nrstr(x) (renamed to not conflict with str())\n\n\n\n\n\nvec(x)"
+  },
+  {
+    "objectID": "index.html#development",
+    "href": "index.html#development",
+    "title": "rfuns ",
+    "section": "",
+    "text": "The repository includes a Makefile for common tasks.\n\nmake install installs the package in editable mode with dev dependencies.\nmake test runs pytest on tests/.\nmake test-r runs pytest --r-check and compares rfuns outputs against R when available.\nmake lint runs ruff on rfuns/ and tests/.\nmake format formats code with ruff.\nmake clean removes build artifacts and caches.\nmake repl starts a Python REPL using uv.\n\nR-backed comparison tests use rpy2 and are only run when rpy2 and R are available."
+  },
+  {
+    "objectID": "reference/duplicated.html",
+    "href": "reference/duplicated.html",
+    "title": "duplicated",
+    "section": "",
+    "text": "duplicated\nduplicated(x)\nReturn boolean list: True where element has appeared earlier.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`duplicated`"
+    ]
+  },
+  {
+    "objectID": "reference/endsWith.html",
+    "href": "reference/endsWith.html",
+    "title": "endsWith",
+    "section": "",
+    "text": "endsWith\nendsWith(x, suffix)\nReturn True if x ends with suffix. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`endsWith`"
+    ]
+  },
+  {
+    "objectID": "reference/paste.html",
+    "href": "reference/paste.html",
+    "title": "paste",
+    "section": "",
+    "text": "paste\npaste(*args, sep=' ', collapse=None)\nConcatenate vectors element-wise with sep, like R’s paste(). If collapse is given, further joins the result into a single string.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`paste`"
+    ]
+  },
+  {
+    "objectID": "reference/sapply.html",
+    "href": "reference/sapply.html",
+    "title": "sapply",
+    "section": "",
+    "text": "sapply\nsapply(x, func)\nApply func to each element of x, simplify if possible. Like R’s sapply().",
+    "crumbs": [
+      "Reference",
+      "Functional",
+      "`sapply`"
+    ]
+  },
+  {
+    "objectID": "reference/startsWith.html",
+    "href": "reference/startsWith.html",
+    "title": "startsWith",
+    "section": "",
+    "text": "startsWith\nstartsWith(x, prefix)\nReturn True if x starts with prefix. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`startsWith`"
+    ]
+  },
+  {
+    "objectID": "reference/floor.html",
+    "href": "reference/floor.html",
+    "title": "floor",
+    "section": "",
+    "text": "floor\nfloor(x)\nFloor. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`floor`"
+    ]
+  },
+  {
+    "objectID": "reference/nrow.html",
+    "href": "reference/nrow.html",
+    "title": "nrow",
+    "section": "",
+    "text": "nrow\nnrow(x)\nNumber of rows of a list-of-lists. Like R’s nrow().",
+    "crumbs": [
+      "Reference",
+      "Inspect",
+      "`nrow`"
+    ]
+  },
+  {
+    "objectID": "reference/sign.html",
+    "href": "reference/sign.html",
+    "title": "sign",
+    "section": "",
+    "text": "sign\nsign(x)\nReturn -1, 0, or 1. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`sign`"
+    ]
+  },
+  {
+    "objectID": "reference/log.html",
+    "href": "reference/log.html",
+    "title": "log",
+    "section": "",
+    "text": "log\nlog(x, base=None)\nNatural log, or log to given base. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`log`"
+    ]
+  },
+  {
+    "objectID": "reference/chartr.html",
+    "href": "reference/chartr.html",
+    "title": "chartr",
+    "section": "",
+    "text": "chartr\nchartr(old, new, x)\nReplace characters in old with corresponding characters in new. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`chartr`"
+    ]
+  },
+  {
+    "objectID": "reference/strsplit.html",
+    "href": "reference/strsplit.html",
+    "title": "strsplit",
+    "section": "",
+    "text": "strsplit\nstrsplit(x, split, fixed=False)\nSplit string x by split pattern. Returns list of lists. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`strsplit`"
+    ]
+  },
+  {
+    "objectID": "reference/head.html",
+    "href": "reference/head.html",
+    "title": "head",
+    "section": "",
+    "text": "head\nhead(x, n=6)\nReturn first n elements, like R’s head().",
+    "crumbs": [
+      "Reference",
+      "Inspect",
+      "`head`"
+    ]
+  },
+  {
+    "objectID": "reference/setdiff.html",
+    "href": "reference/setdiff.html",
+    "title": "setdiff",
+    "section": "",
+    "text": "setdiff\nsetdiff(x, y)\nElements in x not in y, preserving order.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`setdiff`"
+    ]
+  },
+  {
+    "objectID": "reference/gsub.html",
+    "href": "reference/gsub.html",
+    "title": "gsub",
+    "section": "",
+    "text": "gsub\ngsub(pattern, replacement, x, ignore_case=False, fixed=False)\nReplace all matches of pattern in x with replacement. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`gsub`"
+    ]
+  },
+  {
+    "objectID": "reference/median.html",
+    "href": "reference/median.html",
+    "title": "median",
+    "section": "",
+    "text": "median\nmedian(x, na_rm=False)\nMedian. Like R’s median().",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`median`"
+    ]
+  },
+  {
+    "objectID": "reference/intersect.html",
+    "href": "reference/intersect.html",
+    "title": "intersect",
+    "section": "",
+    "text": "intersect\nintersect(x, y)\nElements in both x and y, preserving order of x.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`intersect`"
+    ]
+  },
+  {
+    "objectID": "reference/length.html",
+    "href": "reference/length.html",
+    "title": "length",
+    "section": "",
+    "text": "length\nlength(x)\nLength of x, like R’s length().",
+    "crumbs": [
+      "Reference",
+      "Inspect",
+      "`length`"
+    ]
+  },
+  {
+    "objectID": "reference/toupper.html",
+    "href": "reference/toupper.html",
+    "title": "toupper",
+    "section": "",
+    "text": "toupper\ntoupper(x)\nConvert string to uppercase. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`toupper`"
+    ]
+  },
+  {
+    "objectID": "reference/lapply.html",
+    "href": "reference/lapply.html",
+    "title": "lapply",
+    "section": "",
+    "text": "lapply\nlapply(x, func)\nApply func to each element of x, return list. Like R’s lapply().",
+    "crumbs": [
+      "Reference",
+      "Functional",
+      "`lapply`"
+    ]
+  },
+  {
+    "objectID": "reference/tolower.html",
+    "href": "reference/tolower.html",
+    "title": "tolower",
+    "section": "",
+    "text": "tolower\ntolower(x)\nConvert string to lowercase. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`tolower`"
+    ]
+  },
+  {
+    "objectID": "reference/tapply.html",
+    "href": "reference/tapply.html",
+    "title": "tapply",
+    "section": "",
+    "text": "tapply\ntapply(x, index, func)\nApply func to subsets of x grouped by index. Like R’s tapply(). Returns a dict of {group: result}.",
+    "crumbs": [
+      "Reference",
+      "Functional",
+      "`tapply`"
+    ]
+  },
+  {
+    "objectID": "reference/round.html",
+    "href": "reference/round.html",
+    "title": "round",
+    "section": "",
+    "text": "round\nround(x, digits=0)\nRound x to digits decimal places, like R’s round(). Note: uses round-half-to-even (banker’s rounding), same as Python’s built-in. R also uses this by default (IEC 60559 standard).",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`round`"
+    ]
+  },
+  {
+    "objectID": "reference/cumsum.html",
+    "href": "reference/cumsum.html",
+    "title": "cumsum",
+    "section": "",
+    "text": "cumsum\ncumsum(x)\nCumulative sum.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`cumsum`"
+    ]
+  },
+  {
+    "objectID": "reference/Map.html",
+    "href": "reference/Map.html",
+    "title": "Map",
+    "section": "",
+    "text": "Map\nMap(func, *args)\nApply func element-wise across args. Like R’s Map().",
+    "crumbs": [
+      "Reference",
+      "Functional",
+      "`Map`"
+    ]
+  },
+  {
+    "objectID": "reference/mean.html",
+    "href": "reference/mean.html",
+    "title": "mean",
+    "section": "",
+    "text": "mean\nmean(x, na_rm=False)\nArithmetic mean. Like R’s mean().",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`mean`"
+    ]
+  },
+  {
+    "objectID": "reference/seq_along.html",
+    "href": "reference/seq_along.html",
+    "title": "seq_along",
+    "section": "",
+    "text": "seq_along\nseq_along(x)\nReturn 0-based indices along x, like R’s seq_along() but Python-indexed.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`seq_along`"
+    ]
+  },
+  {
+    "objectID": "reference/trunc.html",
+    "href": "reference/trunc.html",
+    "title": "trunc",
+    "section": "",
+    "text": "trunc\ntrunc(x)\nTruncate toward zero. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`trunc`"
+    ]
+  },
+  {
+    "objectID": "reference/vapply.html",
+    "href": "reference/vapply.html",
+    "title": "vapply",
+    "section": "",
+    "text": "vapply\nvapply(x, func, expected_type)\nLike sapply() but checks that each result is of expected_type. Like R’s vapply() for type safety.",
+    "crumbs": [
+      "Reference",
+      "Functional",
+      "`vapply`"
+    ]
+  },
+  {
+    "objectID": "reference/sub.html",
+    "href": "reference/sub.html",
+    "title": "sub",
+    "section": "",
+    "text": "sub\nsub(pattern, replacement, x, ignore_case=False, fixed=False)\nReplace the first match of pattern in x with replacement. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`sub`"
+    ]
+  },
+  {
+    "objectID": "reference/grepl.html",
+    "href": "reference/grepl.html",
+    "title": "grepl",
+    "section": "",
+    "text": "grepl\ngrepl(pattern, x, ignore_case=False, fixed=False)\nReturn True/False for each element of x matching pattern. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`grepl`"
+    ]
+  },
+  {
+    "objectID": "reference/cumprod.html",
+    "href": "reference/cumprod.html",
+    "title": "cumprod",
+    "section": "",
+    "text": "cumprod\ncumprod(x)\nCumulative product.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`cumprod`"
+    ]
+  },
+  {
+    "objectID": "reference/rev.html",
+    "href": "reference/rev.html",
+    "title": "rev",
+    "section": "",
+    "text": "rev\nrev(x)\nReverse a list.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`rev`"
+    ]
+  },
+  {
+    "objectID": "reference/log10.html",
+    "href": "reference/log10.html",
+    "title": "log10",
+    "section": "",
+    "text": "log10\nlog10(x)\nLog base 10. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`log10`"
+    ]
+  },
+  {
+    "objectID": "reference/sqrt.html",
+    "href": "reference/sqrt.html",
+    "title": "sqrt",
+    "section": "",
+    "text": "sqrt\nsqrt(x)\nSquare root. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`sqrt`"
+    ]
+  },
+  {
+    "objectID": "reference/tail.html",
+    "href": "reference/tail.html",
+    "title": "tail",
+    "section": "",
+    "text": "tail\ntail(x, n=6)\nReturn last n elements, like R’s tail().",
+    "crumbs": [
+      "Reference",
+      "Inspect",
+      "`tail`"
+    ]
+  },
+  {
+    "objectID": "reference/scale.html",
+    "href": "reference/scale.html",
+    "title": "scale",
+    "section": "",
+    "text": "scale\nscale(x, center=True, scale_=True)\nCentre and/or scale x, like R’s scale().",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`scale`"
+    ]
+  },
+  {
+    "objectID": "reference/which_min.html",
+    "href": "reference/which_min.html",
+    "title": "which_min",
+    "section": "",
+    "text": "which_min\nwhich_min(x)\nReturn 0-based index of the minimum value.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`which_min`"
+    ]
+  },
+  {
+    "objectID": "reference/union.html",
+    "href": "reference/union.html",
+    "title": "union",
+    "section": "",
+    "text": "union\nunion(x, y)\nUnique elements from x and y combined, preserving order.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`union`"
+    ]
+  },
+  {
+    "objectID": "reference/margin_table.html",
+    "href": "reference/margin_table.html",
+    "title": "margin_table",
+    "section": "",
+    "text": "margin_table\nmargin_table(x)\nMarginal sums of a contingency table (dict). For a flat table, total is returned.",
+    "crumbs": [
+      "Reference",
+      "Table",
+      "`margin_table`"
+    ]
+  },
+  {
+    "objectID": "get_started.html",
+    "href": "get_started.html",
+    "title": "rfuns",
+    "section": "",
+    "text": "Install rfuns with uv:\nuv add rfuns\nOr with pip:\npip install rfuns\nTo import all the functions defined in rfuns:\nfrom rfuns import *\n\ntrimws([\"  hello  \", \"world \"])\n# ['hello', 'world']\n\nstrsplit(\"these words are split\", \" \") \n# [\"these\", \"words\", \"are\", \"split\"]\n\nx = vec(['a', 'b', 'c', 'b'])\nwhich(x == 'b')\n# [1, 3]\nAlternatively, import the library and use the functions with the a chosen prefix:\nimport rfuns as r\n\nr.trimws([\"  hello  \", \"world \"])\n# ['hello', 'world']\n\nr.strsplit(\"these words are split\", \" \") \n# [\"these\", \"words\", \"are\", \"split\"]\n\nx = r.vec(['a', 'b', 'c', 'b'])\nr.which(x == 'b')\n# [1, 3]\nSee this blog post for more background info.\nIf you encounter any issues, check the GitHub repository to see if it’s a known issue, and if not, feel free to report it:\nLink to GitHub Issues"
+  },
+  {
+    "objectID": "reference/var.html",
+    "href": "reference/var.html",
+    "title": "var",
+    "section": "",
+    "text": "var\nvar(x, na_rm=False)\nSample variance (ddof=1), like R’s var().",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`var`"
+    ]
+  },
+  {
+    "objectID": "reference/exp.html",
+    "href": "reference/exp.html",
+    "title": "exp",
+    "section": "",
+    "text": "exp\nexp(x)\ne^x. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`exp`"
+    ]
+  },
+  {
+    "objectID": "reference/table.html",
+    "href": "reference/table.html",
+    "title": "table",
+    "section": "",
+    "text": "table\ntable(x)\nFrequency table of x, sorted by name, like R’s table(). Returns a dict of {value: count}.",
+    "crumbs": [
+      "Reference",
+      "Table",
+      "`table`"
+    ]
+  },
+  {
+    "objectID": "reference/seq.html",
+    "href": "reference/seq.html",
+    "title": "seq",
+    "section": "",
+    "text": "seq\nseq(from_=0, to=None, by=None, length_out=None)\nGenerate a sequence, like R’s seq(), but 0-based by default. seq(0, 9), seq(0, 10, by=2), seq(length_out=5), seq(5)",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`seq`"
+    ]
+  },
+  {
+    "objectID": "reference/rstr.html",
+    "href": "reference/rstr.html",
+    "title": "rstr",
+    "section": "",
+    "text": "rstr\nrstr(x)\nCompact display of object structure, loosely like R’s str(). Named rstr to avoid shadowing Python’s str().",
+    "crumbs": [
+      "Reference",
+      "Inspect",
+      "`rstr`"
+    ]
+  },
+  {
+    "objectID": "reference/trimws.html",
+    "href": "reference/trimws.html",
+    "title": "trimws",
+    "section": "",
+    "text": "trimws\ntrimws(x, which='both', whitespace='[ \\\\t\\\\r\\\\n]')\nStrip whitespace from strings. which: ‘both’, ‘left’, ‘right’. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`trimws`"
+    ]
+  },
+  {
+    "objectID": "reference/basename.html",
+    "href": "reference/basename.html",
+    "title": "basename",
+    "section": "",
+    "text": "basename\nbasename(path)\nReturn filename component of path. Like R’s basename().",
+    "crumbs": [
+      "Reference",
+      "Files",
+      "`basename`"
+    ]
+  },
+  {
+    "objectID": "reference/prop_table.html",
+    "href": "reference/prop_table.html",
+    "title": "prop_table",
+    "section": "",
+    "text": "prop_table\nprop_table(x)\nProportional frequency table, like R’s prop.table(). Returns a dict of {value: proportion}.",
+    "crumbs": [
+      "Reference",
+      "Table",
+      "`prop_table`"
+    ]
+  },
+  {
+    "objectID": "reference/Filter.html",
+    "href": "reference/Filter.html",
+    "title": "Filter",
+    "section": "",
+    "text": "Filter\nFilter(func, x)\nReturn elements of x for which func returns True. Like R’s Filter().",
+    "crumbs": [
+      "Reference",
+      "Functional",
+      "`Filter`"
+    ]
+  },
+  {
+    "objectID": "reference/quantile.html",
+    "href": "reference/quantile.html",
+    "title": "quantile",
+    "section": "",
+    "text": "quantile\nquantile(x, probs=None, na_rm=False)\nSample quantiles, like R’s quantile(). probs: list of probabilities in [0, 1]. Defaults to [0, 0.25, 0.5, 0.75, 1]. Uses R’s type 7 method (linear interpolation).",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`quantile`"
+    ]
+  },
+  {
+    "objectID": "reference/diff.html",
+    "href": "reference/diff.html",
+    "title": "diff",
+    "section": "",
+    "text": "diff\ndiff(x, lag=1)\nReturn lagged differences of x.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`diff`"
+    ]
+  },
+  {
+    "objectID": "reference/nchar.html",
+    "href": "reference/nchar.html",
+    "title": "nchar",
+    "section": "",
+    "text": "nchar\nnchar(x)\nReturn the number of characters in a string. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`nchar`"
+    ]
+  },
+  {
+    "objectID": "reference/dirname.html",
+    "href": "reference/dirname.html",
+    "title": "dirname",
+    "section": "",
+    "text": "dirname\ndirname(path)\nReturn directory component of path. Like R’s dirname().",
+    "crumbs": [
+      "Reference",
+      "Files",
+      "`dirname`"
+    ]
+  },
+  {
+    "objectID": "reference/r_range.html",
+    "href": "reference/r_range.html",
+    "title": "r_range",
+    "section": "",
+    "text": "r_range\nr_range(x)\nReturn [min, max] of x, like R’s range(). Named r_range to avoid shadowing builtin.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`r_range`"
+    ]
+  },
+  {
+    "objectID": "reference/index.html",
+    "href": "reference/index.html",
+    "title": "Function reference",
+    "section": "",
+    "text": "String manipulation functions.\n\n\n\nnchar\nReturn the number of characters in a string. Vectorised.\n\n\nnzchar\nReturn True if string is non-empty. Vectorised.\n\n\npaste\nConcatenate vectors element-wise with sep, like R’s paste().\n\n\npaste0\npaste() with sep=’’. Equivalent to R’s paste0().\n\n\ngrepl\nReturn True/False for each element of x matching pattern. Vectorised.\n\n\ngrep\nReturn indices (0-based) of elements in x matching pattern.\n\n\ngsub\nReplace all matches of pattern in x with replacement. Vectorised.\n\n\nsub\nReplace the first match of pattern in x with replacement. Vectorised.\n\n\ntrimws\nStrip whitespace from strings. which: ‘both’, ‘left’, ‘right’. Vectorised.\n\n\ntoupper\nConvert string to uppercase. Vectorised.\n\n\ntolower\nConvert string to lowercase. Vectorised.\n\n\nstartsWith\nReturn True if x starts with prefix. Vectorised.\n\n\nendsWith\nReturn True if x ends with suffix. Vectorised.\n\n\nstrsplit\nSplit string x by split pattern. Returns list of lists. Vectorised.\n\n\nsubstr\nExtract substring from start to stop (0-based, inclusive). Vectorised.\n\n\nchartr\nReplace characters in old with corresponding characters in new. Vectorised.\n\n\nformatC\nFormat numbers as strings. Vectorised.\n\n\n\n\n\n\nVector manipulation functions.\n\n\n\nwhich\nReturn 0-based indices where x is True, like R’s which() but Python-indexed.\n\n\nwhich_min\nReturn 0-based index of the minimum value.\n\n\nwhich_max\nReturn 0-based index of the maximum value.\n\n\ndiff\nReturn lagged differences of x.\n\n\ncumsum\nCumulative sum.\n\n\ncumprod\nCumulative product.\n\n\ncummax\nCumulative maximum.\n\n\ncummin\nCumulative minimum.\n\n\nrev\nReverse a list.\n\n\nduplicated\nReturn boolean list: True where element has appeared earlier.\n\n\nsetdiff\nElements in x not in y, preserving order.\n\n\nintersect\nElements in both x and y, preserving order of x.\n\n\nunion\nUnique elements from x and y combined, preserving order.\n\n\nunique\nReturn unique elements preserving order.\n\n\nseq_along\nReturn 0-based indices along x, like R’s seq_along() but Python-indexed.\n\n\nseq_len\nReturn 0-based sequence of length n, like R’s seq_len() but Python-indexed.\n\n\nseq\nGenerate a sequence, like R’s seq(), but 0-based by default.\n\n\nr_range\nReturn [min, max] of x, like R’s range().\n\n\n\n\n\n\nMath operations.\n\n\n\nsign\nReturn -1, 0, or 1. Vectorised.\n\n\ntrunc\nTruncate toward zero. Vectorised.\n\n\nceiling\nCeiling. Vectorised.\n\n\nfloor\nFloor. Vectorised.\n\n\nsqrt\nSquare root. Vectorised.\n\n\nlog\nNatural log, or log to given base. Vectorised.\n\n\nlog2\nLog base 2. Vectorised.\n\n\nlog10\nLog base 10. Vectorised.\n\n\nexp\ne^x. Vectorised.\n\n\nabs\nAbsolute value. Vectorised.\n\n\nvar\nSample variance (ddof=1), like R’s var().\n\n\nsd\nSample standard deviation, like R’s sd().\n\n\nmean\nArithmetic mean. Like R’s mean().\n\n\nmedian\nMedian. Like R’s median().\n\n\nquantile\nSample quantiles, like R’s quantile().\n\n\nscale\nCentre and/or scale x, like R’s scale().\n\n\nround\nRound x to digits decimal places, like R’s round().\n\n\n\n\n\n\nFile and path utilities.\n\n\n\nlist_files\nList files in a directory, like R’s list.files().\n\n\nfile_exists\nReturn True if file exists. Like R’s file.exists().\n\n\ndir_exists\nReturn True if directory exists. Like R’s dir.exists().\n\n\nbasename\nReturn filename component of path. Like R’s basename().\n\n\ndirname\nReturn directory component of path. Like R’s dirname().\n\n\nfile_path\nConstruct file paths, like R’s file.path().\n\n\n\n\n\n\nTabulation functions.\n\n\n\ntable\nFrequency table of x, sorted by name, like R’s table().\n\n\nprop_table\nProportional frequency table, like R’s prop.table().\n\n\nmargin_table\nMarginal sums of a contingency table (dict).\n\n\n\n\n\n\nFunctional programming helpers.\n\n\n\nlapply\nApply func to each element of x, return list. Like R’s lapply().\n\n\nsapply\nApply func to each element of x, simplify if possible. Like R’s sapply().\n\n\nvapply\nLike sapply() but checks that each result is of expected_type.\n\n\ntapply\nApply func to subsets of x grouped by index. Like R’s tapply().\n\n\nrapply\nRecursively apply func to all non-list elements in a nested list.\n\n\nFilter\nReturn elements of x for which func returns True. Like R’s Filter().\n\n\nMap\nApply func element-wise across args. Like R’s Map().\n\n\nReduce\nReduce x with func. Like R’s Reduce().\n\n\n\n\n\n\nInspection and summary functions.\n\n\n\nhead\nReturn first n elements, like R’s head().\n\n\ntail\nReturn last n elements, like R’s tail().\n\n\nlength\nLength of x, like R’s length().\n\n\nnrow\nNumber of rows of a list-of-lists. Like R’s nrow().\n\n\nncol\nNumber of columns of a list-of-lists (assumes rectangular). Like R’s ncol().\n\n\ndim\nReturn [nrow, ncol] of a list-of-lists. Like R’s dim().\n\n\nsummary\nBasic numeric summary, like R’s summary() on a numeric vector.\n\n\nrstr\nCompact display of object structure, loosely like R’s str().\n\n\n\n\n\n\nUtility helpers.\n\n\n\nvec\nWrap a list or tuple in a vectorised Vec object.",
+    "crumbs": [
+      "Reference",
+      "Function reference"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#strings",
+    "href": "reference/index.html#strings",
+    "title": "Function reference",
+    "section": "",
+    "text": "String manipulation functions.\n\n\n\nnchar\nReturn the number of characters in a string. Vectorised.\n\n\nnzchar\nReturn True if string is non-empty. Vectorised.\n\n\npaste\nConcatenate vectors element-wise with sep, like R’s paste().\n\n\npaste0\npaste() with sep=’’. Equivalent to R’s paste0().\n\n\ngrepl\nReturn True/False for each element of x matching pattern. Vectorised.\n\n\ngrep\nReturn indices (0-based) of elements in x matching pattern.\n\n\ngsub\nReplace all matches of pattern in x with replacement. Vectorised.\n\n\nsub\nReplace the first match of pattern in x with replacement. Vectorised.\n\n\ntrimws\nStrip whitespace from strings. which: ‘both’, ‘left’, ‘right’. Vectorised.\n\n\ntoupper\nConvert string to uppercase. Vectorised.\n\n\ntolower\nConvert string to lowercase. Vectorised.\n\n\nstartsWith\nReturn True if x starts with prefix. Vectorised.\n\n\nendsWith\nReturn True if x ends with suffix. Vectorised.\n\n\nstrsplit\nSplit string x by split pattern. Returns list of lists. Vectorised.\n\n\nsubstr\nExtract substring from start to stop (0-based, inclusive). Vectorised.\n\n\nchartr\nReplace characters in old with corresponding characters in new. Vectorised.\n\n\nformatC\nFormat numbers as strings. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Function reference"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#vectors",
+    "href": "reference/index.html#vectors",
+    "title": "Function reference",
+    "section": "",
+    "text": "Vector manipulation functions.\n\n\n\nwhich\nReturn 0-based indices where x is True, like R’s which() but Python-indexed.\n\n\nwhich_min\nReturn 0-based index of the minimum value.\n\n\nwhich_max\nReturn 0-based index of the maximum value.\n\n\ndiff\nReturn lagged differences of x.\n\n\ncumsum\nCumulative sum.\n\n\ncumprod\nCumulative product.\n\n\ncummax\nCumulative maximum.\n\n\ncummin\nCumulative minimum.\n\n\nrev\nReverse a list.\n\n\nduplicated\nReturn boolean list: True where element has appeared earlier.\n\n\nsetdiff\nElements in x not in y, preserving order.\n\n\nintersect\nElements in both x and y, preserving order of x.\n\n\nunion\nUnique elements from x and y combined, preserving order.\n\n\nunique\nReturn unique elements preserving order.\n\n\nseq_along\nReturn 0-based indices along x, like R’s seq_along() but Python-indexed.\n\n\nseq_len\nReturn 0-based sequence of length n, like R’s seq_len() but Python-indexed.\n\n\nseq\nGenerate a sequence, like R’s seq(), but 0-based by default.\n\n\nr_range\nReturn [min, max] of x, like R’s range().",
+    "crumbs": [
+      "Reference",
+      "Function reference"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#math",
+    "href": "reference/index.html#math",
+    "title": "Function reference",
+    "section": "",
+    "text": "Math operations.\n\n\n\nsign\nReturn -1, 0, or 1. Vectorised.\n\n\ntrunc\nTruncate toward zero. Vectorised.\n\n\nceiling\nCeiling. Vectorised.\n\n\nfloor\nFloor. Vectorised.\n\n\nsqrt\nSquare root. Vectorised.\n\n\nlog\nNatural log, or log to given base. Vectorised.\n\n\nlog2\nLog base 2. Vectorised.\n\n\nlog10\nLog base 10. Vectorised.\n\n\nexp\ne^x. Vectorised.\n\n\nabs\nAbsolute value. Vectorised.\n\n\nvar\nSample variance (ddof=1), like R’s var().\n\n\nsd\nSample standard deviation, like R’s sd().\n\n\nmean\nArithmetic mean. Like R’s mean().\n\n\nmedian\nMedian. Like R’s median().\n\n\nquantile\nSample quantiles, like R’s quantile().\n\n\nscale\nCentre and/or scale x, like R’s scale().\n\n\nround\nRound x to digits decimal places, like R’s round().",
+    "crumbs": [
+      "Reference",
+      "Function reference"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#files",
+    "href": "reference/index.html#files",
+    "title": "Function reference",
+    "section": "",
+    "text": "File and path utilities.\n\n\n\nlist_files\nList files in a directory, like R’s list.files().\n\n\nfile_exists\nReturn True if file exists. Like R’s file.exists().\n\n\ndir_exists\nReturn True if directory exists. Like R’s dir.exists().\n\n\nbasename\nReturn filename component of path. Like R’s basename().\n\n\ndirname\nReturn directory component of path. Like R’s dirname().\n\n\nfile_path\nConstruct file paths, like R’s file.path().",
+    "crumbs": [
+      "Reference",
+      "Function reference"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#table",
+    "href": "reference/index.html#table",
+    "title": "Function reference",
+    "section": "",
+    "text": "Tabulation functions.\n\n\n\ntable\nFrequency table of x, sorted by name, like R’s table().\n\n\nprop_table\nProportional frequency table, like R’s prop.table().\n\n\nmargin_table\nMarginal sums of a contingency table (dict).",
+    "crumbs": [
+      "Reference",
+      "Function reference"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#functional",
+    "href": "reference/index.html#functional",
+    "title": "Function reference",
+    "section": "",
+    "text": "Functional programming helpers.\n\n\n\nlapply\nApply func to each element of x, return list. Like R’s lapply().\n\n\nsapply\nApply func to each element of x, simplify if possible. Like R’s sapply().\n\n\nvapply\nLike sapply() but checks that each result is of expected_type.\n\n\ntapply\nApply func to subsets of x grouped by index. Like R’s tapply().\n\n\nrapply\nRecursively apply func to all non-list elements in a nested list.\n\n\nFilter\nReturn elements of x for which func returns True. Like R’s Filter().\n\n\nMap\nApply func element-wise across args. Like R’s Map().\n\n\nReduce\nReduce x with func. Like R’s Reduce().",
+    "crumbs": [
+      "Reference",
+      "Function reference"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#inspect",
+    "href": "reference/index.html#inspect",
+    "title": "Function reference",
+    "section": "",
+    "text": "Inspection and summary functions.\n\n\n\nhead\nReturn first n elements, like R’s head().\n\n\ntail\nReturn last n elements, like R’s tail().\n\n\nlength\nLength of x, like R’s length().\n\n\nnrow\nNumber of rows of a list-of-lists. Like R’s nrow().\n\n\nncol\nNumber of columns of a list-of-lists (assumes rectangular). Like R’s ncol().\n\n\ndim\nReturn [nrow, ncol] of a list-of-lists. Like R’s dim().\n\n\nsummary\nBasic numeric summary, like R’s summary() on a numeric vector.\n\n\nrstr\nCompact display of object structure, loosely like R’s str().",
+    "crumbs": [
+      "Reference",
+      "Function reference"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#utils",
+    "href": "reference/index.html#utils",
+    "title": "Function reference",
+    "section": "",
+    "text": "Utility helpers.\n\n\n\nvec\nWrap a list or tuple in a vectorised Vec object.",
+    "crumbs": [
+      "Reference",
+      "Function reference"
+    ]
+  },
+  {
+    "objectID": "reference/vec.html",
+    "href": "reference/vec.html",
+    "title": "vec",
+    "section": "",
+    "text": "vec\nvec(x)\nWrap a list or tuple in a vectorised Vec object.",
+    "crumbs": [
+      "Reference",
+      "Utils",
+      "`vec`"
+    ]
+  },
+  {
+    "objectID": "reference/seq_len.html",
+    "href": "reference/seq_len.html",
+    "title": "seq_len",
+    "section": "",
+    "text": "seq_len\nseq_len(n)\nReturn 0-based sequence of length n, like R’s seq_len() but Python-indexed.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`seq_len`"
+    ]
+  },
+  {
+    "objectID": "reference/file_exists.html",
+    "href": "reference/file_exists.html",
+    "title": "file_exists",
+    "section": "",
+    "text": "file_exists\nfile_exists(path)\nReturn True if file exists. Like R’s file.exists().",
+    "crumbs": [
+      "Reference",
+      "Files",
+      "`file_exists`"
+    ]
+  },
+  {
+    "objectID": "reference/which.html",
+    "href": "reference/which.html",
+    "title": "which",
+    "section": "",
+    "text": "which\nwhich(x)\nReturn 0-based indices where x is True, like R’s which() but Python-indexed.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`which`"
+    ]
+  },
+  {
+    "objectID": "reference/formatC.html",
+    "href": "reference/formatC.html",
+    "title": "formatC",
+    "section": "",
+    "text": "formatC\nformatC(x, digits=6, format='g', width=None)\nFormat numbers as strings. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`formatC`"
+    ]
+  },
+  {
+    "objectID": "reference/nzchar.html",
+    "href": "reference/nzchar.html",
+    "title": "nzchar",
+    "section": "",
+    "text": "nzchar\nnzchar(x)\nReturn True if string is non-empty. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`nzchar`"
+    ]
+  },
+  {
+    "objectID": "reference/paste0.html",
+    "href": "reference/paste0.html",
+    "title": "paste0",
+    "section": "",
+    "text": "paste0\npaste0(*args, collapse=None)\npaste() with sep=’’. Equivalent to R’s paste0().",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`paste0`"
+    ]
+  },
+  {
+    "objectID": "reference/substr.html",
+    "href": "reference/substr.html",
+    "title": "substr",
+    "section": "",
+    "text": "substr\nsubstr(x, start, stop)\nExtract substring from start to stop (0-based, inclusive). Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`substr`"
+    ]
+  },
+  {
+    "objectID": "reference/summary.html",
+    "href": "reference/summary.html",
+    "title": "summary",
+    "section": "",
+    "text": "summary\nsummary(x)\nBasic numeric summary, like R’s summary() on a numeric vector. Returns a dict with Min, Q1, Median, Mean, Q3, Max.",
+    "crumbs": [
+      "Reference",
+      "Inspect",
+      "`summary`"
+    ]
+  },
+  {
+    "objectID": "reference/dir_exists.html",
+    "href": "reference/dir_exists.html",
+    "title": "dir_exists",
+    "section": "",
+    "text": "dir_exists\ndir_exists(path)\nReturn True if directory exists. Like R’s dir.exists().",
+    "crumbs": [
+      "Reference",
+      "Files",
+      "`dir_exists`"
+    ]
+  },
+  {
+    "objectID": "reference/log2.html",
+    "href": "reference/log2.html",
+    "title": "log2",
+    "section": "",
+    "text": "log2\nlog2(x)\nLog base 2. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`log2`"
+    ]
+  },
+  {
+    "objectID": "reference/cummin.html",
+    "href": "reference/cummin.html",
+    "title": "cummin",
+    "section": "",
+    "text": "cummin\ncummin(x)\nCumulative minimum.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`cummin`"
+    ]
+  },
+  {
+    "objectID": "reference/grep.html",
+    "href": "reference/grep.html",
+    "title": "grep",
+    "section": "",
+    "text": "grep\ngrep(pattern, x, ignore_case=False, fixed=False, value=False, invert=False)\nReturn indices (0-based) of elements in x matching pattern. If value=True, return the matching values instead.",
+    "crumbs": [
+      "Reference",
+      "Strings",
+      "`grep`"
+    ]
+  },
+  {
+    "objectID": "reference/list_files.html",
+    "href": "reference/list_files.html",
+    "title": "list_files",
+    "section": "",
+    "text": "list_files(\n    path='.',\n    pattern=None,\n    recursive=False,\n    full_names=False,\n    all_files=False,\n)\nList files in a directory, like R’s list.files().\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npath\nstr\nDirectory to list.\n'.'\n\n\npattern\nstr\nRegex pattern to filter filenames.\nNone\n\n\nrecursive\nbool\nWhether to recurse into subdirectories.\nFalse\n\n\nfull_names\nbool\nWhether to return full paths.\nFalse\n\n\nall_files\nbool\nWhether to include hidden files starting with a dot.\nFalse",
+    "crumbs": [
+      "Reference",
+      "Files",
+      "`list_files`"
+    ]
+  },
+  {
+    "objectID": "reference/list_files.html#parameters",
+    "href": "reference/list_files.html#parameters",
+    "title": "list_files",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\npath\nstr\nDirectory to list.\n'.'\n\n\npattern\nstr\nRegex pattern to filter filenames.\nNone\n\n\nrecursive\nbool\nWhether to recurse into subdirectories.\nFalse\n\n\nfull_names\nbool\nWhether to return full paths.\nFalse\n\n\nall_files\nbool\nWhether to include hidden files starting with a dot.\nFalse",
+    "crumbs": [
+      "Reference",
+      "Files",
+      "`list_files`"
+    ]
+  },
+  {
+    "objectID": "reference/ceiling.html",
+    "href": "reference/ceiling.html",
+    "title": "ceiling",
+    "section": "",
+    "text": "ceiling\nceiling(x)\nCeiling. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`ceiling`"
+    ]
+  },
+  {
+    "objectID": "reference/rapply.html",
+    "href": "reference/rapply.html",
+    "title": "rapply",
+    "section": "",
+    "text": "rapply\nrapply(x, func)\nRecursively apply func to all non-list elements in a nested list. Like R’s rapply().",
+    "crumbs": [
+      "Reference",
+      "Functional",
+      "`rapply`"
+    ]
+  },
+  {
+    "objectID": "reference/ncol.html",
+    "href": "reference/ncol.html",
+    "title": "ncol",
+    "section": "",
+    "text": "ncol\nncol(x)\nNumber of columns of a list-of-lists (assumes rectangular). Like R’s ncol().",
+    "crumbs": [
+      "Reference",
+      "Inspect",
+      "`ncol`"
+    ]
+  },
+  {
+    "objectID": "reference/dim.html",
+    "href": "reference/dim.html",
+    "title": "dim",
+    "section": "",
+    "text": "dim\ndim(x)\nReturn [nrow, ncol] of a list-of-lists. Like R’s dim().",
+    "crumbs": [
+      "Reference",
+      "Inspect",
+      "`dim`"
+    ]
+  },
+  {
+    "objectID": "reference/which_max.html",
+    "href": "reference/which_max.html",
+    "title": "which_max",
+    "section": "",
+    "text": "which_max\nwhich_max(x)\nReturn 0-based index of the maximum value.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`which_max`"
+    ]
+  },
+  {
+    "objectID": "reference/unique.html",
+    "href": "reference/unique.html",
+    "title": "unique",
+    "section": "",
+    "text": "unique\nunique(x)\nReturn unique elements preserving order.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`unique`"
+    ]
+  },
+  {
+    "objectID": "reference/Reduce.html",
+    "href": "reference/Reduce.html",
+    "title": "Reduce",
+    "section": "",
+    "text": "Reduce\nReduce(func, x, init=None, accumulate=False)\nReduce x with func. Like R’s Reduce(). If accumulate=True, return all intermediate results.",
+    "crumbs": [
+      "Reference",
+      "Functional",
+      "`Reduce`"
+    ]
+  },
+  {
+    "objectID": "reference/file_path.html",
+    "href": "reference/file_path.html",
+    "title": "file_path",
+    "section": "",
+    "text": "file_path\nfile_path(*args)\nConstruct file paths, like R’s file.path().",
+    "crumbs": [
+      "Reference",
+      "Files",
+      "`file_path`"
+    ]
+  },
+  {
+    "objectID": "reference/abs.html",
+    "href": "reference/abs.html",
+    "title": "abs",
+    "section": "",
+    "text": "abs\nabs(x)\nAbsolute value. Vectorised.",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`abs`"
+    ]
+  },
+  {
+    "objectID": "reference/cummax.html",
+    "href": "reference/cummax.html",
+    "title": "cummax",
+    "section": "",
+    "text": "cummax\ncummax(x)\nCumulative maximum.",
+    "crumbs": [
+      "Reference",
+      "Vectors",
+      "`cummax`"
+    ]
+  },
+  {
+    "objectID": "reference/sd.html",
+    "href": "reference/sd.html",
+    "title": "sd",
+    "section": "",
+    "text": "sd\nsd(x, na_rm=False)\nSample standard deviation, like R’s sd().",
+    "crumbs": [
+      "Reference",
+      "Math",
+      "`sd`"
+    ]
+  }
+]

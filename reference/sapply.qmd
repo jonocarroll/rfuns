@@ -1,0 +1,7 @@
+# sapply { #rfuns.sapply }
+
+```python
+sapply(x, func)
+```
+
+Apply func to each element of x, simplify if possible. Like R's sapply().

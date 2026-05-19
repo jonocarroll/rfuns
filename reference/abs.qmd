@@ -1,0 +1,7 @@
+# abs { #rfuns.abs }
+
+```python
+abs(x)
+```
+
+Absolute value. Vectorised.

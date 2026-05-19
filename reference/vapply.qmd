@@ -1,0 +1,8 @@
+# vapply { #rfuns.vapply }
+
+```python
+vapply(x, func, expected_type)
+```
+
+Like sapply() but checks that each result is of expected_type.
+Like R's vapply() for type safety.

@@ -1,0 +1,8 @@
+# prop_table { #rfuns.prop_table }
+
+```python
+prop_table(x)
+```
+
+Proportional frequency table, like R's prop.table().
+Returns a dict of {value: proportion}.

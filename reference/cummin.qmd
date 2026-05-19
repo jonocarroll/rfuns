@@ -1,0 +1,7 @@
+# cummin { #rfuns.cummin }
+
+```python
+cummin(x)
+```
+
+Cumulative minimum.

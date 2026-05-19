@@ -1,0 +1,8 @@
+# r_range { #rfuns.r_range }
+
+```python
+r_range(x)
+```
+
+Return [min, max] of x, like R's range().
+Named r_range to avoid shadowing builtin.

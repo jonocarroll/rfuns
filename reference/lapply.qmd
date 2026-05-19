@@ -1,0 +1,7 @@
+# lapply { #rfuns.lapply }
+
+```python
+lapply(x, func)
+```
+
+Apply func to each element of x, return list. Like R's lapply().

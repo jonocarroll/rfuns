@@ -1,0 +1,7 @@
+# substr { #rfuns.substr }
+
+```python
+substr(x, start, stop)
+```
+
+Extract substring from start to stop (0-based, inclusive). Vectorised.

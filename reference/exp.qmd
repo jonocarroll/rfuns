@@ -1,0 +1,7 @@
+# exp { #rfuns.exp }
+
+```python
+exp(x)
+```
+
+e^x. Vectorised.

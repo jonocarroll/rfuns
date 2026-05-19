@@ -1,0 +1,7 @@
+# sqrt { #rfuns.sqrt }
+
+```python
+sqrt(x)
+```
+
+Square root. Vectorised.
