@@ -4,7 +4,7 @@ rfuns is a Python package providing implementations of common base R functions, 
 
 This is not intended to be used in production, and makes no guarantees about performance - this is purely for ergonomics of someone who usually writes code in R, but is using Python.
 
-See this blog post for more info: [https://jcarroll.com.au/]()
+See this blog post for more info: [https://jcarroll.click/rfuns]()
 
 ## Installation
 
