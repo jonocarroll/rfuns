@@ -8,6 +8,9 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: read
+
 jobs:
     build-docs:
         runs-on: ubuntu-latest
@@ -23,4 +26,4 @@ jobs:
           - name: Build docs
             run: |
               cd docs && uv run quartodoc build --verbose
-	          uv run quarto render docs
+              uv run quarto render docs
