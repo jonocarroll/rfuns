@@ -27,6 +27,8 @@ jobs:
           - name: Install dependencies
             run: |
               python -m pip install -e .[docs]
+              # downgrade griffe until https://github.com/machow/quartodoc/issues/423 is resolved
+              python -m pip install griffe==1.9.0
               python -m pip install quartodoc
           - name: Build docs
             run: |
