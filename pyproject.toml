@@ -17,6 +17,7 @@ classifiers = [
 ]
 keywords = ["R"]
 license = "MIT"
+license.file = "LICENSE"
 dependencies = []
 
 [project.optional-dependencies]
