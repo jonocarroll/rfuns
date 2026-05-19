@@ -4,17 +4,21 @@ rfuns is a Python package providing implementations of common base R functions, 
 
 This is not intended to be used in production, and makes no guarantees about performance - this is purely for ergonomics of someone who usually writes code in R, but is using Python.
 
-See this blog post for more info: [https://jcarroll.click/rfuns]()
+See [this blog post](https://jcarroll.click/rfuns_post) for more info.
 
 ## Installation
 
 Install with uv:
 
-    uv add rfuns
+```bash
+uv add rfuns
+```
 
 Or with pip:
 
-    pip install rfuns
+```bash
+pip install rfuns
+```
 
 ## Important notes
 
@@ -24,63 +28,79 @@ All indexing is 0-based, unlike R's 1-based system. Vectorisation is opt-in usin
 
 Trim whitespace from strings:
 
-    from rfuns import trimws
-    trimws(["  hello  ", "world "])
-    # ['hello', 'world']
+```py
+from rfuns import trimws
+trimws(["  hello  ", "world "])
+# ['hello', 'world']
+```
 
 Split strings:
 
-    from rfuns import strsplit
-    strsplit("these words are split", " ") 
-    # ["these", "words", "are", "split"]
+```py
+from rfuns import strsplit
+strsplit("these words are split", " ") 
+# ["these", "words", "are", "split"]
+```
 
 Find indices of `True` values:
 
-    from rfuns import which
-    which([False, True, False, True])
-    # [1, 3]
+```py
+from rfuns import which
+which([False, True, False, True])
+# [1, 3]
+```
 
 Find indices where vector equals a value:
 
-    from rfuns import which, vec
-    x = vec(['a', 'b', 'c', 'b'])
-    which(x == 'b')
-    # [1, 3]
+```py
+from rfuns import which, vec
+x = vec(['a', 'b', 'c', 'b'])
+which(x == 'b')
+# [1, 3]
+```
 
 (note that since Python is not vectorised, a simple `==` between a list and a value is `False`, so the list is wrapped in `vec()` which implements vectorised binary operations)
 
 Generate sequences:
 
-    from rfuns import seq, seq_len
-    seq(2, 5)
-    # [2, 3, 4, 5]
+```py
+from rfuns import seq, seq_len
+seq(2, 5)
+# [2, 3, 4, 5]
 
-    seq_len(5)
-    # [0, 1, 2, 3, 4]
+seq_len(5)
+# [0, 1, 2, 3, 4]
+```
 
 Compute set difference preserving order:
 
-    set([4, 3, 1, 2]) - set([2, 4])
-    # {1, 3} 
-    
-    from rfuns import setdiff
-    setdiff([4, 3, 1, 2], [2, 4])
-    # [3, 1]
+```py
+set([4, 3, 1, 2]) - set([2, 4])
+# {1, 3} 
+
+from rfuns import setdiff
+setdiff([4, 3, 1, 2], [2, 4])
+# [3, 1]
+```
 
 Apply math functions vectorised:
 
-    from rfuns import abs, sqrt
-    abs([-1, 2, -3])
-    # [1, 2, 3]
+```py
+from rfuns import abs, sqrt
+abs([-1, 2, -3])
+# [1, 2, 3]
 
-    sqrt([81, 9, 4])
-    # [9.0, 3.0, 2.0]
+sqrt([81, 9, 4])
+# [9.0, 3.0, 2.0]
+```
 
 List files in a directory:
 
-    from rfuns import list_files
-    list_files(".")
-    # ['file1.txt', 'file2.py']
+```py
+from rfuns import list_files
+list_files(".")
+# ['file1.txt', 'file2.py']
+```
 
 ## Implemented functions
 
