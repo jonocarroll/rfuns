@@ -1,0 +1,26 @@
+name: Build docs
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main", "dev-*"]
+  pull_request:
+  release:
+    types: [published]
+
+jobs:
+    build-docs:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+          - name: Install uv
+            uses: astral-sh/setup-uv@v4
+            with:
+              enable-cache: true
+          - name: Set up Python 3.10
+            run: uv python install 3.10
+          - uses: quarto-dev/quarto-actions/setup@v2
+          - name: Build docs
+            run: |
+              cd docs && uv run quartodoc build --verbose
+	          uv run quarto render docs
