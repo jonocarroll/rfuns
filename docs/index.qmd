@@ -1,4 +1,4 @@
-# rfuns <img src='rfuns_logo.png' align="right" height="138" />
+# rfuns <img src='rfuns_logo_small.png' align="right" height="138" />
 
 rfuns is a Python package providing implementations of common base R functions, adapted for Python with 0-based indexing and vectorisation support. This was mainly built to address my own desire to use these functions in exactly the way I would use them in R, but without calling out to an R session. All of these are implemented in Python without external/non-standard dependencies. 
 
