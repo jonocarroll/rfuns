@@ -42,6 +42,26 @@ r.which(x == 'b')
 # [1, 3]
 ```
 
+The wrappers themselves are mostly for convenience and famliiarity for R users, and are not optimised for performance. For example, `table()` is implemented using `collections.Counter` as
+
+```py
+from collections import Counter
+
+def table(x):
+    return dict(sorted(Counter(x).items()))
+```
+
+but I find `table()` to be a much cleaner abstraction of this. 
+
+Similarly, `which()` is implemented as a simple list comprehension:
+
+```py
+def which(x):
+    return [i for i, v in enumerate(x) if v]
+```
+
+but again, a one-word function seems (at least to me) vastly cleaner.
+
 See [this blog post](https://jcarroll.click/rfuns_post) for more background info.
 
 If you encounter any issues, check the GitHub repository to see if it's a known issue, and if not, feel free to report it: 

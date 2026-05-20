@@ -16,7 +16,7 @@ classifiers = [
     "Topic :: Utilities"
 ]
 keywords = ["R"]
-license.file = "LICENSE"
+license-files = ["LICENSE"]
 dependencies = []
 
 [project.optional-dependencies]

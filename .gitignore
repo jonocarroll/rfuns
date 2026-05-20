@@ -226,7 +226,7 @@ __marimo__/
 
 # Quarto
 /.quarto/
-_site/
+docs/docs/
 objects.json
 reference/
 src/
