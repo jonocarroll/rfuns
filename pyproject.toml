@@ -16,7 +16,7 @@ classifiers = [
     "Topic :: Utilities"
 ]
 keywords = ["R"]
-license = "MIT"
+license = {text = "MIT"}
 dependencies = []
 
 [project.optional-dependencies]
